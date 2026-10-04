@@ -24,34 +24,6 @@ register_manager_based_rl_env(
     },
 )
 
-# -- test additional z_rl tasks --
-register_manager_based_rl_env(
-    task_id="Velocity-Flat-Go2-ZRL-MoE",
-    env_cfg_module=f"{__name__}.flat_env_cfg",
-    env_cfg_name="Go2FlatEnvCfg",
-    agent_cfg_entry_points={
-        "z_rl_cfg_entry_point": f"{agents.__name__}.z_rl_ppo_cfg:Go2FlatMoEPPORunnerCfg",
-    },
-)
-
-register_manager_based_rl_env(
-    task_id="Velocity-Flat-Go2-ZRL-RNN",
-    env_cfg_module=f"{__name__}.flat_env_cfg",
-    env_cfg_name="Go2FlatEnvCfg",
-    agent_cfg_entry_points={
-        "z_rl_cfg_entry_point": f"{agents.__name__}.z_rl_ppo_cfg:Go2FlatRNNPPORunnerCfg",
-    },
-)
-
-register_manager_based_rl_env(
-    task_id="Velocity-Flat-Go2-ZRL-EncoderEstimation",
-    env_cfg_module=f"{__name__}.flat_env_cfg",
-    env_cfg_name="Go2FlatEnvCfg",
-    agent_cfg_entry_points={
-        "z_rl_cfg_entry_point": f"{agents.__name__}.z_rl_ppo_cfg:Go2FlatEncoderEstimationPPORunnerCfg",
-    },
-)
-
 
 # ===== Rough terrain =====
 register_manager_based_rl_env(
@@ -64,20 +36,3 @@ register_manager_based_rl_env(
     },
 )
 
-register_manager_based_rl_env(
-    task_id="Velocity-Rough-Go2-ZRL-DreamWaQ",
-    env_cfg_module=f"{__name__}.rough_env_cfg",
-    env_cfg_name="Go2RoughExtraObsHistotyEnvCfg",
-    agent_cfg_entry_points={
-        "z_rl_cfg_entry_point": f"{agents.__name__}.z_rl_dreamwaq_ppo_cfg:Go2RoughDreamWaQPPORunnerCfg",
-    },
-)
-
-register_manager_based_rl_env(
-    task_id="Velocity-Rough-Go2-ZRL-BarlowTwins",
-    env_cfg_module=f"{__name__}.rough_env_cfg",
-    env_cfg_name="Go2RoughExtraObsHistotyEnvCfg",
-    agent_cfg_entry_points={
-        "z_rl_cfg_entry_point": f"{agents.__name__}.z_rl_barlowtwins_ppo_cfg:Go2RoughBarlowTwinsPPORunnerCfg",
-    },
-)
