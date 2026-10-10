@@ -6,14 +6,19 @@
 # All rights reserved.
 # Modifications are licensed under BSD-3-Clause.
 
+from pathlib import Path
+
 import isaaclab.sim as sim_utils
 from isaaclab.markers.visualization_markers import VisualizationMarkersCfg
-from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
+
+ARROW_X_USD_PATH = str(
+    Path(__file__).resolve().parents[1] / "assets" / "arrow_x.usd"
+)
 
 RED_ARROW_X_MARKER_CFG = VisualizationMarkersCfg(
     markers={
         "arrow": sim_utils.UsdFileCfg(
-            usd_path=f"{ISAAC_NUCLEUS_DIR}/Props/UIElements/arrow_x.usd",
+            usd_path=ARROW_X_USD_PATH,
             scale=(1.0, 0.1, 0.1),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(1.0, 0.0, 0.0)),
         )
@@ -25,7 +30,7 @@ RED_ARROW_X_MARKER_CFG = VisualizationMarkersCfg(
 BLUE_ARROW_X_MARKER_CFG = VisualizationMarkersCfg(
     markers={
         "arrow": sim_utils.UsdFileCfg(
-            usd_path=f"{ISAAC_NUCLEUS_DIR}/Props/UIElements/arrow_x.usd",
+            usd_path=ARROW_X_USD_PATH,
             scale=(1.0, 0.1, 0.1),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(0.2, 0.2, 0.9)),
         )
@@ -36,7 +41,7 @@ BLUE_ARROW_X_MARKER_CFG = VisualizationMarkersCfg(
 GREEN_ARROW_X_MARKER_CFG = VisualizationMarkersCfg(
     markers={
         "arrow": sim_utils.UsdFileCfg(
-            usd_path=f"{ISAAC_NUCLEUS_DIR}/Props/UIElements/arrow_x.usd",
+            usd_path=ARROW_X_USD_PATH,
             scale=(1.0, 0.1, 0.1),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(0.2, 0.9, 0.2)),
         )
@@ -48,7 +53,7 @@ GREEN_ARROW_X_MARKER_CFG = VisualizationMarkersCfg(
 RED_ARROW_X_MARKER_CFG = VisualizationMarkersCfg(
     markers={
         "arrow": sim_utils.UsdFileCfg(
-            usd_path=f"{ISAAC_NUCLEUS_DIR}/Props/UIElements/arrow_x.usd",
+            usd_path=ARROW_X_USD_PATH,
             scale=(1.0, 0.1, 0.1),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(0.9, 0.2, 0.2)),
         )
