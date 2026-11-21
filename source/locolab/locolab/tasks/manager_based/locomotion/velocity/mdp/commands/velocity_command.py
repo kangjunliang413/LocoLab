@@ -139,13 +139,20 @@ class UniformVelocityCommand(CommandTerm):
         if self._metrics_update_counter != 0:
             return
 
+        velocity_target = self.vel_command_b[:, :2]
+        if self.cfg.metrics_force_event_name is not None:
+            force_term = self._env.event_manager.get_term_cfg(self.cfg.metrics_force_event_name).func
+            velocity_target = (
+                velocity_target + self.cfg.metrics_force_offset_gain * force_term.applied_external_force_b[:, :2]
+            )
+
         # logs data
         self.metrics["error_vel_xy"].add_(
-            torch.norm(self.vel_command_b[:, :2] - self.robot.data.root_lin_vel_b.torch[:, :2], dim=-1),
+            torch.norm(velocity_target - self.robot.data.root_lin_vel_b[:, :2], dim=-1),
             alpha=self._metrics_update_scale,
         )
         self.metrics["error_vel_yaw"].add_(
-            torch.abs(self.vel_command_b[:, 2] - self.robot.data.root_ang_vel_b.torch[:, 2]),
+            torch.abs(self.vel_command_b[:, 2] - self.robot.data.root_ang_vel_b[:, 2]),
             alpha=self._metrics_update_scale,
         )
 

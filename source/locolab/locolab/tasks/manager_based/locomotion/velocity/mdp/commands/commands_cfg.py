@@ -37,6 +37,12 @@ class UniformVelocityCommandCfg(CommandTermCfg):
 
     metrics_update_interval: int = 200
     """Number of control steps between metric updates. Defaults to 200."""
+    
+    metrics_force_event_name: str | None = None
+    """Optional force event used to shift the XY velocity target for metrics."""
+
+    metrics_force_offset_gain: float = 0.0
+    """Body-frame XY velocity offset per unit of applied force, in m/s per N."""
 
     heading_command: bool = False
     """Whether to use heading command or angular velocity command. Defaults to False.
