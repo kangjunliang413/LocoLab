@@ -34,9 +34,6 @@ class UniformVelocityCommandCfg(CommandTermCfg):
 
     zero_velocity_threshold: float = 0.2
     """Velocity threshold for the command generator. Defaults to 0.2."""
-
-    metrics_update_interval: int = 200
-    """Number of control steps between metric updates. Defaults to 200."""
     
     metrics_force_event_name: str | None = None
     """Optional force event used to shift the XY velocity target for metrics."""
@@ -82,6 +79,10 @@ class UniformVelocityCommandCfg(CommandTermCfg):
 
     This is a separate, mutually exclusive command mode. Defaults to 0.0.
     """
+
+    compute_command_metrics_every_step: bool = False
+    """Accumulate velocity errors for episode logging at every control step."""
+
 
     @configclass
     class Ranges:
@@ -184,9 +185,6 @@ class FlatPatchVelocityCommandCfg(CommandTermCfg):
 
     rel_standing_envs: float = 0.0
     """Probability of sampling a standing command instead of moving to the target."""
-
-    metrics_update_interval: int = 200
-    """Number of control steps between metric updates."""
 
 
 @configclass
